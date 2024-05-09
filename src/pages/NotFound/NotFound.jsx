@@ -4,14 +4,14 @@ import { FaArrowLeft } from "react-icons/fa6";
 
 const NotFound = () => {
   return (
-    <div className='my-10'>
+    <div className='py-16 h-screen bg-color2'>
       <div className='w-4/5 md:w-3/5 lg:w-2/5 mx-auto'>
         <img
           className='rounded-xl border-2 border-color6'
           src={img404}
           alt='404 Image'
         />
-        <div className='mt-5 flex justify-center'>
+        <div className='mt-8 flex justify-center'>
           <Link
             to='/'
             className='font-pacifico flex gap-3 items-center w-fit  p-3 bg-color9 text-color8 rounded-xl text-2xl'>
