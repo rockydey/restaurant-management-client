@@ -5,9 +5,11 @@ import Footer from "./components/Shared/Footer/Footer";
 
 function App() {
   return (
-    <div>
+    <div className='font-nunito'>
       <Header />
-      <Outlet />
+      <div className='max-w-screen-xl mx-auto'>
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

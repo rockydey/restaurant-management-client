@@ -14,7 +14,7 @@ const NotFound = () => {
         <div className='mt-8 flex justify-center'>
           <Link
             to='/'
-            className='font-pacifico flex gap-3 items-center w-fit  p-3 bg-color9 text-color8 rounded-xl text-2xl'>
+            className='font-nunito font-semibold flex gap-3 items-center w-fit  p-3 bg-color9 text-color8 rounded-xl text-2xl'>
             <FaArrowLeft /> Back to Home
           </Link>
         </div>

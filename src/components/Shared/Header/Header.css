@@ -1,0 +1,31 @@
+nav {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.bg-white {
+  background-color: inherit !important;
+}
+
+div > ul,
+button > span {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+}
+
+.toggle {
+  color: white;
+}
+.toggle:hover {
+  background-color: inherit !important;
+}
+
+/* Tablet Responsive */
+@media only screen and (max-width: 768px) {
+  div > ul,
+  button > span {
+    font-size: 18px !important;
+  }
+}
