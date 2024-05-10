@@ -80,7 +80,7 @@ const Header = () => {
   );
 
   return (
-    <div className='absolute top-0 w-full'>
+    <div className='absolute top-0 w-full transition-all duration-1000'>
       <div className='py-3 px-3 md:px-5 lg:px-0 flex items-center justify-between text-color8 max-w-screen-xl mx-auto'>
         <div className='flex flex-col md:flex-row md:items-center gap-1 md:gap-5'>
           <p className='flex text-base items-center gap-1'>
@@ -103,8 +103,14 @@ const Header = () => {
           </p>
         </div>
       </div>
-      <div className={`${isSticky ? "fixed top-0 w-full" : ""}`}>
-        <div className='bg-color10 border-b border-b-color3 py-2 px-3 md:px-5 lg:px-0'>
+      <div
+        className={`${
+          isSticky ? "fixed top-0 w-full transition-all duration-1000 z-50" : ""
+        }`}>
+        <div
+          className={`${
+            isSticky ? "bg-[#000000d9] border-b border-b-color3" : "bg-color10"
+          }  py-3 px-3 md:px-5 lg:px-0`}>
           <div className='max-w-screen-xl mx-auto'>
             <Navbar fluid rounded>
               <NavbarBrand

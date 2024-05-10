@@ -1,0 +1,12 @@
+.animate-img {
+  animation: round 50s linear infinite;
+}
+
+@keyframes round {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
