@@ -57,6 +57,10 @@ const Register = () => {
       })
       .catch((error) => {
         console.error(error.message);
+        toast.error(error.message, {
+          position: "top-center",
+          theme: "colored",
+        });
       });
   };
   return (

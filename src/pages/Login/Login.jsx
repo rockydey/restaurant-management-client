@@ -38,6 +38,10 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error.message);
+        toast.error(error.message, {
+          position: "top-center",
+          theme: "colored",
+        });
       });
   };
 
@@ -53,6 +57,10 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error.message);
+        toast.error(error.message, {
+          position: "top-center",
+          theme: "colored",
+        });
       });
   };
 

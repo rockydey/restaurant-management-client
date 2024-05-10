@@ -4,17 +4,24 @@ import {
   NavbarBrand,
   NavbarCollapse,
   NavbarToggle,
+  Avatar,
+  Dropdown,
+  DropdownDivider,
+  DropdownItem,
 } from "flowbite-react";
 import { ImSpoonKnife } from "react-icons/im";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { CiMobile3 } from "react-icons/ci";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaFacebook, FaPinterest, FaTwitter, FaYoutube } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../provider/AuthProvider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Header = () => {
   const navigate = useNavigate();
   const [isSticky, setIsSticky] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,6 +85,22 @@ const Header = () => {
     </>
   );
 
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Log Out Successfully!", {
+          position: "top-center",
+          theme: "colored",
+        });
+      })
+      .catch((error) => {
+        toast.error(error.message, {
+          position: "top-center",
+          theme: "colored",
+        });
+      });
+  };
+
   return (
     <div className='absolute top-0 w-full transition-all duration-1000'>
       <div className='py-3 px-3 md:px-5 lg:px-0 flex items-center justify-between text-color8 max-w-screen-xl mx-auto'>
@@ -124,11 +147,52 @@ const Header = () => {
                 </span>
               </NavbarBrand>
               <div className='flex gap-3 md:gap-0 md:order-2'>
-                <Link to='/login'>
-                  <button className='bg-color9 py-2 px-4 font-semibold text-lg rounded-lg'>
-                    Login
-                  </button>
-                </Link>
+                {user ? (
+                  <>
+                    <Dropdown
+                      className='bg-color12 border-color9'
+                      arrowIcon={false}
+                      inline
+                      label={
+                        <Avatar
+                          className='border-[3px] border-color9 rounded-full'
+                          alt='User Photo'
+                          img={user?.photoURL}
+                          rounded
+                        />
+                      }>
+                      <DropdownItem
+                        onClick={() => navigate("/my-items")}
+                        className='text-color8 focus:bg-color9 hover:bg-color9 text-lg font-medium'>
+                        My Items
+                      </DropdownItem>
+                      <DropdownItem
+                        onClick={() => navigate("/add-item")}
+                        className='text-color8 focus:bg-color9 hover:bg-color9 text-lg font-medium'>
+                        Add Item
+                      </DropdownItem>
+                      <DropdownItem
+                        onClick={() => navigate("/ordered-items")}
+                        className='text-color8 focus:bg-color9 hover:bg-color9 text-lg font-medium'>
+                        Ordered Items
+                      </DropdownItem>
+                      <DropdownDivider className='bg-color9' />
+                      <DropdownItem className='hover:bg-color12 focus:bg-color12'>
+                        <button
+                          onClick={handleLogOut}
+                          className='bg-color9 w-full py-2 text-color8 cursor-pointer px-4 font-semibold text-lg rounded-lg'>
+                          Log Out
+                        </button>
+                      </DropdownItem>
+                    </Dropdown>
+                  </>
+                ) : (
+                  <Link to='/login'>
+                    <button className='bg-color9 py-2 px-4 font-semibold text-lg rounded-lg'>
+                      Login
+                    </button>
+                  </Link>
+                )}
                 <NavbarToggle className='toggle' />
               </div>
               <NavbarCollapse className='text-color8'>
