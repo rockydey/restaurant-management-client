@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import img404 from "../../assets/404/404.jpg";
 import { FaArrowLeft } from "react-icons/fa6";
+import { Helmet } from "react-helmet-async";
 
 const NotFound = () => {
   return (
     <div className='py-16 h-screen bg-color2'>
+      <Helmet>
+        <title>TasteTreat | 404 - Not Found</title>
+      </Helmet>
       <div className='w-4/5 md:w-3/5 lg:w-2/5 mx-auto'>
         <img
           className='rounded-xl border-2 border-color6'

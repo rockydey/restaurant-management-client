@@ -28,7 +28,7 @@ const Banner = () => {
             </p>
             <Link
               to='/all-foods'
-              className='p-3 text-base lg:text-lg font-semibold inline-block bg-color9 rounded-lg'>
+              className='px-4 py-2 text-base lg:text-lg font-semibold inline-block bg-color9 rounded-lg'>
               Explore Foods
             </Link>
           </div>

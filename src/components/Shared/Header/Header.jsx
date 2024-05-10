@@ -1,6 +1,5 @@
 import "./Header.css";
 import {
-  Button,
   Navbar,
   NavbarBrand,
   NavbarCollapse,
@@ -126,7 +125,9 @@ const Header = () => {
               </NavbarBrand>
               <div className='flex gap-3 md:gap-0 md:order-2'>
                 <Link to='/login'>
-                  <Button className='bg-color9'>Login</Button>
+                  <button className='bg-color9 py-2 px-4 font-semibold text-lg rounded-lg'>
+                    Login
+                  </button>
                 </Link>
                 <NavbarToggle className='toggle' />
               </div>
