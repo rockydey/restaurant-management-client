@@ -5,7 +5,7 @@ import Footer from "./components/Shared/Footer/Footer";
 
 function App() {
   return (
-    <div className='font-nunito'>
+    <div className='font-nunito bg-color2 text-color8'>
       <Header />
       <Outlet />
       <Footer />

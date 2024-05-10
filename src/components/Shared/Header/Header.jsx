@@ -10,7 +10,7 @@ import { ImSpoonKnife } from "react-icons/im";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { CiMobile3 } from "react-icons/ci";
 import { IoLocationOutline } from "react-icons/io5";
-import { FaFacebook, FaPinterest, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaPinterest, FaTwitter, FaYoutube } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
 const Header = () => {
@@ -92,6 +92,9 @@ const Header = () => {
           </p>
         </div>
         <div className='text-2xl flex items-center gap-5'>
+          <p className='cursor-pointer text-[#FF0000]'>
+            <FaYoutube />
+          </p>
           <p className='cursor-pointer text-[#1877F2]'>
             <FaFacebook />
           </p>

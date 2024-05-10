@@ -10,3 +10,17 @@
     transform: rotate(360deg);
   }
 }
+
+/* Tablet Responsive */
+@media only screen and (max-width: 768px) {
+  .animate-img {
+    animation: none;
+  }
+}
+
+/* Mobile Responsive */
+@media only screen and (max-width: 60px) {
+  .animate-img {
+    animation: none;
+  }
+}
