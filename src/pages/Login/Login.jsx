@@ -61,7 +61,7 @@ const Login = () => {
                     />
                   </div>
                   {errors.userEmail?.type === "required" && (
-                    <span className='text-color4'>Email is required!</span>
+                    <span className='text-color11'>Email is required!</span>
                   )}
                 </div>
                 <div>
@@ -89,7 +89,7 @@ const Login = () => {
                     </div>
                   </div>
                   {errors.userPassword?.type === "required" && (
-                    <span className='text-color4'>Password is required!</span>
+                    <span className='text-color11'>Password is required!</span>
                   )}
                 </div>
                 <p className='mt-4  underline cursor-pointer text-base text-color9 font-medium'>
