@@ -3,10 +3,12 @@ import loginBg from "../../assets/login/login-hero.jpg";
 import { MdOutlineAlternateEmail, MdOutlineUploadFile } from "react-icons/md";
 import { useForm } from "react-hook-form";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
+import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const {
@@ -16,6 +18,9 @@ const Register = () => {
   } = useForm();
   const [show, setShow] = useState(false);
   const [regError, setRegError] = useState("");
+  const { createUser, updateUserProfile, setLoading } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleRegister = (data) => {
     const name = data.userName;
@@ -33,6 +38,26 @@ const Register = () => {
     } else {
       setRegError("");
     }
+
+    createUser(email, password)
+      .then((result) => {
+        navigate(location?.state ? location.state : "/");
+        toast.success("User Successfully Registered!", {
+          position: "top-center",
+          theme: "colored",
+        });
+        console.log(result.user);
+        updateUserProfile(name, photo)
+          .then(() => {
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
   };
   return (
     <div>
@@ -42,7 +67,7 @@ const Register = () => {
       <div>
         <div
           style={{ backgroundImage: `url(${loginBg})` }}
-          className='lg:h-[40vh] bg-cover bg-center bg-no-repeat bg-color10 bg-blend-overlay'>
+          className='lg:h-[50vh] bg-cover bg-center bg-no-repeat bg-color12 bg-blend-overlay'>
           <div className='text-center pt-44 pb-14 lg:pb-0'>
             <h1 className='text-5xl font-black'>Register</h1>
             <div className='flex gap-2 text-xl justify-center mt-5 font-semibold'>
@@ -152,7 +177,7 @@ const Register = () => {
               </form>
               <p className='text-center text-base font-normal text-color1 mt-5'>
                 Already have an account?{" "}
-                <Link className='text-color9 font-semibold' to='/register'>
+                <Link className='text-color9 font-semibold' to='/login'>
                   Login Now
                 </Link>
               </p>

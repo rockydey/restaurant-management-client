@@ -3,10 +3,12 @@ import loginBg from "../../assets/login/login-hero.jpg";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { useForm } from "react-hook-form";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/search.png";
+import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const {
@@ -15,12 +17,43 @@ const Login = () => {
     handleSubmit,
   } = useForm();
   const [show, setShow] = useState(false);
+  const { loginUser, googleLogin } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLogin = (data) => {
     const email = data.userEmail;
     const password = data.userPassword;
 
     console.log(email, password);
+
+    loginUser(email, password)
+      .then((result) => {
+        navigate(location?.state ? location.state : "/");
+        console.log(result.user);
+        toast.success("User Login Successfully!", {
+          position: "top-center",
+          theme: "colored",
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        navigate(location?.state ? location.state : "/");
+        console.log(result.user);
+        toast.success("User Login Successfully!", {
+          position: "top-center",
+          theme: "colored",
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   return (
@@ -31,7 +64,7 @@ const Login = () => {
       <div>
         <div
           style={{ backgroundImage: `url(${loginBg})` }}
-          className='lg:h-[40vh] bg-cover bg-center bg-no-repeat bg-color10 bg-blend-overlay'>
+          className='lg:h-[50vh] bg-cover bg-center bg-no-repeat bg-color12 bg-blend-overlay'>
           <div className='text-center pt-44 pb-14 lg:pb-0'>
             <h1 className='text-5xl font-black'>Login</h1>
             <div className='flex gap-2 text-xl justify-center mt-5 font-semibold'>
@@ -106,7 +139,9 @@ const Login = () => {
                 <p>OR</p>
                 <div className='border-b-2 border-color4 w-24'></div>
               </div>
-              <div className='text-xl border-2 border-color4 py-2 px-5 rounded-full justify-center cursor-pointer w-fit text-color2 font-semibold flex items-center gap-3 mx-auto'>
+              <div
+                onClick={handleGoogleLogin}
+                className='text-xl border-2 border-color4 py-2 px-5 rounded-full justify-center cursor-pointer w-fit text-color2 font-semibold flex items-center gap-3 mx-auto'>
                 <img className='w-6' src={googleIcon} alt='' />
                 <p>Login with Google</p>
               </div>

@@ -16,6 +16,7 @@ export default {
       color9: "#FEA116",
       color10: "#0c0b0999",
       color11: "#de463b",
+      color12: "#000000b3",
     },
     fontFamily: {
       nunito: '"Nunito", sans-serif',
