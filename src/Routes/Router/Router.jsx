@@ -26,6 +26,8 @@ const router = createBrowserRouter([
       {
         path: "/view-details/:id",
         element: <ViewFoodDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/foods/${params.id}`),
       },
       {
         path: "/gallery",
