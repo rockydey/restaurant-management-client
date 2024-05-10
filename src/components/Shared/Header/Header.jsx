@@ -8,13 +8,31 @@ import {
 } from "flowbite-react";
 import { ImSpoonKnife } from "react-icons/im";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import bannerBg from "../../../assets/banner/bannerBg.jpg";
 import { CiMobile3 } from "react-icons/ci";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaFacebook, FaPinterest, FaTwitter } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 const Header = () => {
   const navigate = useNavigate();
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 0) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const navLinkStyles = ({ isActive }) => {
     return {
@@ -62,9 +80,7 @@ const Header = () => {
   );
 
   return (
-    <div
-      style={{ backgroundImage: `url(${bannerBg})` }}
-      className='h-screen bg-cover bg-center bg-no-repeat bg-color10 bg-blend-overlay'>
+    <div className='absolute top-0 w-full'>
       <div className='py-3 px-3 md:px-5 lg:px-0 flex items-center justify-between text-color8 max-w-screen-xl mx-auto'>
         <div className='flex flex-col md:flex-row md:items-center gap-1 md:gap-5'>
           <p className='flex text-base items-center gap-1'>
@@ -87,7 +103,7 @@ const Header = () => {
           </p>
         </div>
       </div>
-      <div className='sticky top-0'>
+      <div className={`${isSticky ? "fixed top-0 w-full" : ""}`}>
         <div className='bg-color10 border-b border-b-color3 py-2 px-3 md:px-5 lg:px-0'>
           <div className='max-w-screen-xl mx-auto'>
             <Navbar fluid rounded>

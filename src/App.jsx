@@ -7,9 +7,7 @@ function App() {
   return (
     <div className='font-nunito'>
       <Header />
-      <div className='max-w-screen-xl mx-auto'>
-        <Outlet />
-      </div>
+      <Outlet />
       <Footer />
     </div>
   );

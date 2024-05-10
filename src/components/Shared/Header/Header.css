@@ -18,6 +18,7 @@ button > span {
 .toggle {
   color: white;
 }
+
 .toggle:hover {
   background-color: inherit !important;
 }
