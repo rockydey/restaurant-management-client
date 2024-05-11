@@ -176,8 +176,8 @@ const Header = () => {
                         className='text-color8 focus:bg-color9 hover:bg-color9 text-lg font-medium'>
                         Ordered Items
                       </DropdownItem>
-                      <DropdownDivider className='bg-color9' />
-                      <DropdownItem className='hover:bg-color12 focus:bg-color12'>
+                      <DropdownDivider className='bg-color9 lg:hidden' />
+                      <DropdownItem className='hover:bg-color12 lg:hidden focus:bg-color12'>
                         <button
                           onClick={handleLogOut}
                           className='bg-color9 w-full py-2 text-color8 cursor-pointer px-4 font-semibold text-lg rounded-lg'>
@@ -185,6 +185,11 @@ const Header = () => {
                         </button>
                       </DropdownItem>
                     </Dropdown>
+                    <button
+                      onClick={handleLogOut}
+                      className='bg-color9 w-full lg:ml-4 hidden lg:inline-block py-2 text-color8 cursor-pointer px-4 font-semibold text-lg rounded-lg'>
+                      Log Out
+                    </button>
                   </>
                 ) : (
                   <Link to='/login'>

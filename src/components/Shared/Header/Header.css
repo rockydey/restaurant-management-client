@@ -23,6 +23,10 @@ button > span {
   background-color: inherit !important;
 }
 
+button > div > div > img {
+  max-width: fit-content;
+}
+
 /* Tablet Responsive */
 @media only screen and (max-width: 768px) {
   div > ul,
