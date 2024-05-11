@@ -3,11 +3,19 @@ import loginBg from "../../assets/login/login-hero.jpg";
 import Food from "../../components/AllFoodsComponents/Food/Food";
 import { useLoaderData } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const AllFoods = () => {
   const foods = useLoaderData();
-  const [searchFood, setSearchFood] = useState(foods);
+  const [searchFood, setSearchFood] = useState([]);
+  const [count, setCount] = useState(null);
+  const foodsPerPage = 9;
+  const [currentPage, setCurrentPage] = useState(0);
+  const numberOfPages = Math.ceil(count / foodsPerPage);
+
+  const pages = [...Array(numberOfPages).keys()];
 
   const searchFunc = (value) => {
     setSearchFood(
@@ -19,12 +27,46 @@ const AllFoods = () => {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    searchFunc(event.target.search.value);
+    const search = event.target.search.value;
+    searchFunc(search);
   };
 
   const handleSearchOnCHange = (event) => {
-    searchFunc(event.target.value);
+    const search = event.target.value;
+    searchFunc(search);
   };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/foodsCount")
+      .then((res) => {
+        setCount(res.data.count);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+    console.log(currentPage);
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < pages.length) {
+      setCurrentPage(currentPage + 1);
+    }
+    console.log(currentPage);
+  };
+
+  useEffect(() => {
+    axios
+      .get(
+        `http://localhost:5000/foods?page=${currentPage}&size=${foodsPerPage}`
+      )
+      .then((res) => setSearchFood(res.data))
+      .catch((error) => console.error(error));
+  }, [currentPage]);
 
   return (
     <div>
@@ -64,10 +106,40 @@ const AllFoods = () => {
                 </button>
               </form>
             </div>
-            <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-              {searchFood.map((food) => (
-                <Food key={food._id} food={food}></Food>
+            {searchFood.length === 0 ? (
+              <p className='text-center text-4xl font-black text-color11'>
+                Sorry, this food dish is not found!
+              </p>
+            ) : (
+              <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+                {searchFood.map((food) => (
+                  <Food key={food._id} food={food}></Food>
+                ))}
+              </div>
+            )}
+            <div className='mt-10 flex gap-4 justify-center items-center'>
+              <button
+                onClick={handlePrevPage}
+                className='border-2 hover:bg-color9 hover:text-color8 duration-300 border-color9 text-color9 px-2 py-2 rounded-full'>
+                <FaChevronLeft />
+              </button>
+              {pages.map((page) => (
+                <button
+                  onClick={() => setCurrentPage(page)}
+                  className={`${
+                    currentPage === page
+                      ? "bg-color9 border-2 border-color9"
+                      : "border-2 border-color9 text-color9"
+                  } px-[14px] py-2 rounded-full`}
+                  key={page}>
+                  {page + 1}
+                </button>
               ))}
+              <button
+                onClick={handleNextPage}
+                className='border-2 hover:bg-color9 hover:text-color8 duration-300 border-color9 text-color9 px-2 py-2 rounded-full'>
+                <FaChevronRight />
+              </button>
             </div>
           </div>
         </div>
