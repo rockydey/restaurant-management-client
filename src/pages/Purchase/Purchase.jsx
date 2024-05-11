@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 const Purchase = () => {
   const purchaseFood = useLoaderData();
-  const { _id, food_name, price, quantity, count } = purchaseFood;
+  const { _id, food_name, food_image, price, quantity, count } = purchaseFood;
   const { user } = useContext(AuthContext);
   const [error, setError] = useState("");
 
@@ -37,7 +37,7 @@ const Purchase = () => {
     const date = form.bDate.value;
 
     if (foodQuantity > quantity) {
-      setError(`Maximum food quantity will be ${quantity}`);
+      setError(`Maximum food quantity is ${quantity}`);
       return;
     } else {
       setError("");
@@ -51,6 +51,7 @@ const Purchase = () => {
       user_email: userEmail,
       date: date,
     };
+    console.log(order);
 
     axios
       .post("http://localhost:5000/orders", order)
@@ -99,91 +100,116 @@ const Purchase = () => {
         </div>
         <div className='bg-color1 py-24 px-3 md:px-5 lg:px-0'>
           <div className='max-w-screen-xl mx-auto'>
-            <form onSubmit={handlePurchase} className='text-color2'>
-              <div>
-                <label className='text-color8' htmlFor='fName'>
-                  Food Name:{" "}
-                </label>
-                <input
-                  readOnly
-                  defaultValue={food_name}
-                  type='text'
-                  name='fName'
-                  required
-                  id='fName'
+            <div className='md:w-4/5 w-full lg:w-[45%] mx-auto bg-color7 p-10 rounded-xl'>
+              <div className='flex justify-center mb-5'>
+                <img
+                  className='w-36 border-4 rounded-full border-color9'
+                  src={food_image}
+                  alt=''
                 />
               </div>
-              <div>
-                <label className='text-color8' htmlFor='price'>
-                  Price:{" "}
-                </label>
-                <input
-                  readOnly
-                  defaultValue={price}
-                  type='text'
-                  name='price'
-                  id='price'
-                  required
-                />
-              </div>
-              <div>
-                <label className='text-color8' htmlFor='quantity'>
-                  Quantity:{" "}
-                </label>
-                <input
-                  placeholder={`Available quantity ${quantity}`}
-                  type='number'
-                  name='quantity'
-                  id='quantity'
-                  required
-                />
-                {<p className='text-color11'>{error}</p>}
-              </div>
-              <div>
-                <label className='text-color8' htmlFor='uName'>
-                  User Name:{" "}
-                </label>
-                <input
-                  defaultValue={user?.displayName}
-                  readOnly
-                  type='text'
-                  name='uName'
-                  id='uName'
-                  required
-                />
-              </div>
-              <div>
-                <label className='text-color8' htmlFor='uEmail'>
-                  User Email:{" "}
-                </label>
-                <input
-                  defaultValue={user?.email}
-                  readOnly
-                  type='email'
-                  name='uEmail'
-                  id='uEmail'
-                  required
-                />
-              </div>
-              <div>
-                <label className='text-color8' htmlFor='bDate'>
-                  Buying Date:{" "}
-                </label>
-                <input
-                  defaultValue={currentDate}
-                  readOnly
-                  type='text'
-                  name='bDate'
-                  id='bDate'
-                  required
-                />
-              </div>
-              <button
-                className='bg-color9 text-color8 px-4 py-2 cursor-pointer'
-                type='submit'>
-                Placed Order
-              </button>
-            </form>
+              <form onSubmit={handlePurchase} className='text-color2 space-y-5'>
+                <div className='flex md:flex-row flex-col gap-5 md:gap-0 justify-between'>
+                  <div className='flex flex-col gap-1'>
+                    <label className='font-semibold text-lg' htmlFor='uName'>
+                      User Name:{" "}
+                    </label>
+                    <input
+                      className='w-full rounded-md focus:shadow-none focus:border-l-0 focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
+                      defaultValue={user?.displayName}
+                      readOnly
+                      type='text'
+                      name='uName'
+                      id='uName'
+                      required
+                    />
+                  </div>
+                  <div className='flex flex-col gap-1'>
+                    <label className='font-semibold text-lg' htmlFor='uEmail'>
+                      User Email:{" "}
+                    </label>
+                    <input
+                      className='w-full rounded-md focus:shadow-none focus:border-l-0 focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
+                      defaultValue={user?.email}
+                      readOnly
+                      type='email'
+                      name='uEmail'
+                      id='uEmail'
+                      required
+                    />
+                  </div>
+                </div>
+                <div className='flex md:flex-row flex-col gap-5 md:gap-0 justify-between'>
+                  <div className='flex flex-col gap-1'>
+                    <label className='font-semibold text-lg' htmlFor='fName'>
+                      Food Name:{" "}
+                    </label>
+                    <input
+                      className='w-full rounded-md focus:shadow-none focus:border-l-0 focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
+                      readOnly
+                      defaultValue={food_name}
+                      type='text'
+                      name='fName'
+                      required
+                      id='fName'
+                    />
+                  </div>
+                  <div className='flex flex-col gap-1'>
+                    <label className='font-semibold text-lg' htmlFor='price'>
+                      Price:{" "}
+                    </label>
+                    <input
+                      readOnly
+                      defaultValue={price}
+                      className='w-full rounded-md focus:shadow-none focus:border-l-0 focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
+                      type='text'
+                      name='price'
+                      id='price'
+                      required
+                    />
+                  </div>
+                </div>
+                <div className='flex md:flex-row flex-col gap-5 md:gap-0 justify-between'>
+                  <div className='flex flex-col gap-1'>
+                    <label className='font-semibold text-lg' htmlFor='quantity'>
+                      Quantity:{" "}
+                    </label>
+                    <input
+                      className='w-full rounded-md focus:shadow-none focus:border-l-0 focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
+                      placeholder={`Available quantity ${quantity}`}
+                      type='number'
+                      name='quantity'
+                      id='quantity'
+                      required
+                    />
+                    {<p className='text-color11'>{error}</p>}
+                  </div>
+                  <div className='flex flex-col gap-1'>
+                    <label className='font-semibold text-lg' htmlFor='bDate'>
+                      Buying Date:{" "}
+                    </label>
+                    <input
+                      className='w-full rounded-md focus:shadow-none focus:border-l-0 focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
+                      defaultValue={currentDate}
+                      readOnly
+                      type='text'
+                      name='bDate'
+                      id='bDate'
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className='text-center'>
+                  <button
+                    className={`bg-color9 text-color8 px-5 py-2 cursor-pointer disabled:bg-[#cccccc] disabled:text-[#666666] font-semibold`}
+                    type='submit'
+                    disabled={quantity === 0}>
+                    Placed Order
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
