@@ -4,6 +4,7 @@ import loginBg from "../../assets/login/login-hero.jpg";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Purchase = () => {
   const purchaseFood = useLoaderData();
@@ -56,7 +57,22 @@ const Purchase = () => {
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
-          console.log();
+          Swal.fire({
+            icon: "success",
+            title: "SUCCESSFUL",
+            text: "Order placed successfully!",
+          });
+          const nCount = count + 1;
+          const nQuantity = quantity - foodQuantity;
+          axios
+            .patch(`http://localhost:5000/foods/${_id}`, {
+              count: nCount,
+              quantity: nQuantity,
+            })
+            .then((res) => {
+              console.log(res.data);
+            })
+            .catch((error) => console.error(error.message));
         }
       })
       .catch((error) => console.error(error));
