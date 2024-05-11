@@ -48,6 +48,7 @@ const router = createBrowserRouter([
       {
         path: "/gallery",
         element: <Gallery />,
+        loader: () => fetch("http://localhost:5000/feedbacks"),
       },
       {
         path: "/contact",

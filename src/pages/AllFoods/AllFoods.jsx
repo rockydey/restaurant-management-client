@@ -15,7 +15,16 @@ const AllFoods = () => {
 
   const pages = [...Array(numberOfPages).keys()];
 
-  const handleSearchOnCHange = (event) => {
+  useEffect(() => {
+    axios
+      .get(
+        `http://localhost:5000/foods?page=${currentPage}&size=${foodsPerPage}`
+      )
+      .then((res) => setSearchFood(res.data))
+      .catch((error) => console.error(error));
+  }, [currentPage]);
+
+  const handleSearchOnChange = (event) => {
     const search = event.target.value;
     console.log(search);
     if (search === "") {
@@ -29,7 +38,6 @@ const AllFoods = () => {
       axios
         .get(`http://localhost:5000/searchFoods?search=${search}`)
         .then((res) => {
-          // console.log(res.data);
           setSearchFood(res.data);
         })
         .catch((error) => console.error(error));
@@ -59,15 +67,6 @@ const AllFoods = () => {
     console.log(currentPage);
   };
 
-  useEffect(() => {
-    axios
-      .get(
-        `http://localhost:5000/foods?page=${currentPage}&size=${foodsPerPage}`
-      )
-      .then((res) => setSearchFood(res.data))
-      .catch((error) => console.error(error));
-  }, [currentPage]);
-
   return (
     <div>
       <Helmet>
@@ -91,7 +90,7 @@ const AllFoods = () => {
             <div className='mb-5'>
               <div className='flex items-center justify-center md:justify-end'>
                 <input
-                  onChange={handleSearchOnCHange}
+                  onChange={handleSearchOnChange}
                   placeholder='Find your food'
                   className='px-4 py-2 rounded-s-lg focus:shadow-none focus:ring-0 border-color4 focus:outline-none text-base font-normal text-color2'
                   type='text'

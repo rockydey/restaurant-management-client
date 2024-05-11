@@ -200,10 +200,9 @@ const Purchase = () => {
                     />
                   </div>
                 </div>
-
                 <div className='text-center'>
                   <button
-                    className={`bg-color9 text-color8 px-5 py-2 cursor-pointer disabled:bg-[#cccccc] disabled:text-[#666666] font-semibold`}
+                    className={`bg-color9 text-color8 px-5 py-2 cursor-pointer disabled:bg-[#cccccc] disabled:cursor-not-allowed disabled:text-[#666666] font-semibold`}
                     type='submit'
                     disabled={quantity === 0}>
                     Placed Order
