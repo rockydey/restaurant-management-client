@@ -115,7 +115,7 @@ const Purchase = () => {
                       User Name:{" "}
                     </label>
                     <input
-                      className='w-full rounded-md focus:shadow-none focus:border-l-0 focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
+                      className='w-full rounded-md focus:shadow-none focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
                       defaultValue={user?.displayName}
                       readOnly
                       type='text'
@@ -129,7 +129,7 @@ const Purchase = () => {
                       User Email:{" "}
                     </label>
                     <input
-                      className='w-full rounded-md focus:shadow-none focus:border-l-0 focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
+                      className='w-full rounded-md focus:shadow-none focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
                       defaultValue={user?.email}
                       readOnly
                       type='email'
@@ -145,7 +145,7 @@ const Purchase = () => {
                       Food Name:{" "}
                     </label>
                     <input
-                      className='w-full rounded-md focus:shadow-none focus:border-l-0 focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
+                      className='w-full rounded-md focus:shadow-none focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
                       readOnly
                       defaultValue={food_name}
                       type='text'
@@ -161,7 +161,7 @@ const Purchase = () => {
                     <input
                       readOnly
                       defaultValue={price}
-                      className='w-full rounded-md focus:shadow-none focus:border-l-0 focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
+                      className='w-full rounded-md focus:shadow-none focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
                       type='text'
                       name='price'
                       id='price'
@@ -175,7 +175,7 @@ const Purchase = () => {
                       Quantity:{" "}
                     </label>
                     <input
-                      className='w-full rounded-md focus:shadow-none focus:border-l-0 focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
+                      className='w-full rounded-md focus:shadow-none focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
                       placeholder={`Available quantity ${quantity}`}
                       type='number'
                       name='quantity'
@@ -189,7 +189,7 @@ const Purchase = () => {
                       Buying Date:{" "}
                     </label>
                     <input
-                      className='w-full rounded-md focus:shadow-none focus:border-l-0 focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
+                      className='w-full rounded-md focus:shadow-none focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
                       defaultValue={currentDate}
                       readOnly
                       type='text'
