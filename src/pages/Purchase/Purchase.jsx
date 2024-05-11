@@ -77,6 +77,7 @@ const Purchase = () => {
         }
       })
       .catch((error) => console.error(error));
+    form.reset();
   };
 
   return (

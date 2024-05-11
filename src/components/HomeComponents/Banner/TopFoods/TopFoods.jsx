@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import TopFood from "../../TopFood/TopFood";
+import { Link } from "react-router-dom";
 
 const TopFoods = () => {
   const [topFoods, setTopFoods] = useState([]);
@@ -28,6 +29,13 @@ const TopFoods = () => {
           {topFoods.map((topFood) => (
             <TopFood key={topFood._id} topFood={topFood}></TopFood>
           ))}
+        </div>
+        <div className='text-center'>
+          <Link
+            to='/all-foods'
+            className='px-5 py-2 border-2 border-color9 rounded-lg text-color9 text-xl font-bold duration-300 hover:bg-color9 hover:text-color8'>
+            See All Foods
+          </Link>
         </div>
       </div>
     </div>
