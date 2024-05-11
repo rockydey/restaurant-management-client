@@ -8,6 +8,8 @@ import Contact from "../../pages/Contact/Contact";
 import Login from "../../pages/Login/Login";
 import Register from "../../pages/Register/Register";
 import ViewFoodDetails from "../../pages/ViewFoodDetails/ViewFoodDetails";
+import Purchase from "../../pages/Purchase/Purchase";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +27,21 @@ const router = createBrowserRouter([
       },
       {
         path: "/view-details/:id",
-        element: <ViewFoodDetails />,
+        element: (
+          <PrivateRoute>
+            <ViewFoodDetails />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/foods/${params.id}`),
+      },
+      {
+        path: "/purchase/:id",
+        element: (
+          <PrivateRoute>
+            <Purchase />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/foods/${params.id}`),
       },

@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import loginBg from "../../assets/login/login-hero.jpg";
 
 const ViewFoodDetails = () => {
@@ -38,10 +38,14 @@ const ViewFoodDetails = () => {
           <div className='max-w-screen-xl text-color2 mx-auto'>
             <div className='lg:w-4/5 mx-auto bg-color7 hover:bg-color8 p-10 rounded-xl'>
               <div className='flex md:flex-row flex-col gap-3 md:items-center justify-between'>
-                <h3 className='text-2xl md:text-3xl font-bold text-color9'>{food_name}</h3>
-                <button className='bg-color9 w-fit text-xl font-semibold text-color8 px-4 py-2'>
+                <h3 className='text-2xl md:text-3xl font-bold text-color9'>
+                  {food_name}
+                </h3>
+                <Link
+                  to={`/purchase/${_id}`}
+                  className='bg-color9 w-fit text-xl font-semibold text-color8 px-4 py-2'>
                   Purchase
-                </button>
+                </Link>
               </div>
               <div className='border-b-2 mt-5 border-color5'></div>
               <div className='flex md:flex-row flex-col justify-between md:items-center'>
