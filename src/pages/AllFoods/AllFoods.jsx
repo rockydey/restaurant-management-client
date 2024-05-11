@@ -1,14 +1,12 @@
 import { Helmet } from "react-helmet-async";
 import loginBg from "../../assets/login/login-hero.jpg";
 import Food from "../../components/AllFoodsComponents/Food/Food";
-import { useLoaderData } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const AllFoods = () => {
-  const foods = useLoaderData();
   const [searchFood, setSearchFood] = useState([]);
   const [count, setCount] = useState(null);
   const foodsPerPage = 9;
@@ -17,23 +15,25 @@ const AllFoods = () => {
 
   const pages = [...Array(numberOfPages).keys()];
 
-  const searchFunc = (value) => {
-    setSearchFood(
-      foods.filter((food) =>
-        food.food_name.toLowerCase().match(value.toLowerCase())
-      )
-    );
-  };
-
-  const handleSearch = (event) => {
-    event.preventDefault();
-    const search = event.target.search.value;
-    searchFunc(search);
-  };
-
   const handleSearchOnCHange = (event) => {
     const search = event.target.value;
-    searchFunc(search);
+    console.log(search);
+    if (search === "") {
+      axios
+        .get(
+          `http://localhost:5000/foods?page=${currentPage}&size=${foodsPerPage}`
+        )
+        .then((res) => setSearchFood(res.data))
+        .catch((error) => console.error(error));
+    } else {
+      axios
+        .get(`http://localhost:5000/searchFoods?search=${search}`)
+        .then((res) => {
+          // console.log(res.data);
+          setSearchFood(res.data);
+        })
+        .catch((error) => console.error(error));
+    }
   };
 
   useEffect(() => {
@@ -89,9 +89,7 @@ const AllFoods = () => {
         <div className='bg-color1 py-24 px-3 md:px-5 lg:px-0'>
           <div className='max-w-screen-xl mx-auto'>
             <div className='mb-5'>
-              <form
-                className='flex items-center justify-end'
-                onSubmit={handleSearch}>
+              <div className='flex items-center justify-center md:justify-end'>
                 <input
                   onChange={handleSearchOnCHange}
                   placeholder='Find your food'
@@ -104,7 +102,7 @@ const AllFoods = () => {
                   type='submit'>
                   <FaSearch />
                 </button>
-              </form>
+              </div>
             </div>
             {searchFood.length === 0 ? (
               <p className='text-center text-4xl font-black text-color11'>
