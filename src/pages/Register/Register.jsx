@@ -28,8 +28,6 @@ const Register = () => {
     const photo = data.userPhotoURL;
     const password = data.userPassword;
 
-    console.log(name, email, photo, password);
-
     if (!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)) {
       setRegError(
         "Password should have a uppercase and a lowercase and also minimum 6 character!"

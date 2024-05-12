@@ -48,7 +48,10 @@ const Gallery = () => {
         }
       })
       .catch((error) => {
-        toast.error(error.message);
+        toast.error(error.message, {
+          position: "top-center",
+          theme: "colored",
+        });
       });
   };
 

@@ -36,7 +36,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/foods/${params.id}`),
+          fetch(`http://localhost:5000/foods/${params.id}`, {
+            credentials: "include",
+          }),
       },
       {
         path: "/purchase/:id",
@@ -46,7 +48,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/foods/${params.id}`),
+          fetch(`http://localhost:5000/foods/${params.id}`, {
+            credentials: "include",
+          }),
       },
       {
         path: "/gallery",

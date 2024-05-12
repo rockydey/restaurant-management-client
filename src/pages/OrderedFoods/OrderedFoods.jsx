@@ -21,7 +21,9 @@ const OrderedFoods = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/orders?email=${user?.email}`)
+      .get(`http://localhost:5000/orders?email=${user?.email}`, {
+        withCredentials: true,
+      })
       .then((res) => setMyOrders(res.data))
       .catch((error) => console.error(error.message));
   }, [user]);
@@ -54,7 +56,12 @@ const OrderedFoods = () => {
               });
             }
           })
-          .catch((error) => toast.error(error.message));
+          .catch((error) =>
+            toast.error(error.message, {
+              position: "top-center",
+              theme: "colored",
+            })
+          );
       }
     });
   };

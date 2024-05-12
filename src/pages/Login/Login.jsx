@@ -25,8 +25,6 @@ const Login = () => {
     const email = data.userEmail;
     const password = data.userPassword;
 
-    console.log(email, password);
-
     loginUser(email, password)
       .then((result) => {
         navigate(location?.state ? location.state : "/");

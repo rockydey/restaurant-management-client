@@ -53,7 +53,12 @@ const AddFoods = () => {
           });
         }
       })
-      .catch((error) => toast.error(error.message));
+      .catch((error) =>
+        toast.error(error.message, {
+          position: "top-center",
+          theme: "colored",
+        })
+      );
   };
 
   return (
