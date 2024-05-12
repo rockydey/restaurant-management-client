@@ -1,12 +1,18 @@
 import { Helmet } from "react-helmet-async";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import loginBg from "../../assets/login/login-hero.jpg";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
 
 const ViewFoodDetails = () => {
   const foodDetails = useLoaderData();
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const {
     _id,
     food_name,
+    user_email,
     food_image,
     food_category,
     price,
@@ -14,6 +20,7 @@ const ViewFoodDetails = () => {
     origin,
     description,
   } = foodDetails;
+
   return (
     <div>
       <Helmet>
@@ -41,11 +48,12 @@ const ViewFoodDetails = () => {
                 <h3 className='text-2xl md:text-3xl font-bold text-color9'>
                   {food_name}
                 </h3>
-                <Link
-                  to={`/purchase/${_id}`}
-                  className='bg-color9 w-fit text-xl font-semibold text-color8 px-4 py-2'>
+                <button
+                  disabled={user.email === user_email}
+                  onClick={() => navigate(`/purchase/${_id}`)}
+                  className='bg-color9 disabled:bg-[#cccccc] disabled:cursor-not-allowed disabled:text-[#666666] w-fit text-xl font-semibold text-color8 px-4 py-2'>
                   Purchase
-                </Link>
+                </button>
               </div>
               <div className='border-b-2 mt-5 border-color5'></div>
               <div className='flex md:flex-row flex-col justify-between md:items-center'>
