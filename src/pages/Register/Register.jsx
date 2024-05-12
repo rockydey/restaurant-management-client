@@ -9,6 +9,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
+import addNewUser from "../../utilities/addUser";
 
 const Register = () => {
   const {
@@ -18,7 +19,8 @@ const Register = () => {
   } = useForm();
   const [show, setShow] = useState(false);
   const [regError, setRegError] = useState("");
-  const { createUser, updateUserProfile, setLoading } = useContext(AuthContext);
+  const { user, createUser, updateUserProfile, setLoading } =
+    useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -48,6 +50,7 @@ const Register = () => {
         updateUserProfile(name, photo)
           .then(() => {
             setLoading(false);
+            addNewUser(user);
           })
           .catch((error) => {
             console.error(error);

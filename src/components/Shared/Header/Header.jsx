@@ -9,9 +9,9 @@ import {
   DropdownDivider,
   DropdownItem,
 } from "flowbite-react";
+import { MdOutlineDateRange } from "react-icons/md";
 import { ImSpoonKnife } from "react-icons/im";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { PiSignInFill } from "react-icons/pi";
 import {
   FaFacebook,
   FaPinterest,
@@ -27,6 +27,16 @@ const Header = () => {
   const navigate = useNavigate();
   const [isSticky, setIsSticky] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+
+  // Current Date
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = today.toLocaleString("default", { month: "long" });
+  let dd = today.getDate();
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  const currentDate = dd + " " + mm.slice(0, 3) + " " + yyyy;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -115,8 +125,8 @@ const Header = () => {
             <span>{user?.displayName}</span>
           </p>
           <p className='flex text-base items-center gap-2'>
-            <PiSignInFill className='text-color9' />{" "}
-            <span>{user?.metadata?.lastSignInTime.slice(4, 16)}</span>
+            <MdOutlineDateRange className='text-color9' />{" "}
+            <span>{currentDate}</span>
           </p>
         </div>
         <div className='text-2xl flex items-center gap-5'>

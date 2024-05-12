@@ -3,12 +3,14 @@ import loginBg from "../../assets/login/login-hero.jpg";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { useForm } from "react-hook-form";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/search.png";
 import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
+import addNewUser from "../../utilities/addUser";
+import axios from "axios";
 
 const Login = () => {
   const {
@@ -18,8 +20,16 @@ const Login = () => {
   } = useForm();
   const [show, setShow] = useState(false);
   const { loginUser, googleLogin } = useContext(AuthContext);
+  const [saveUser, setSaveUser] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/user")
+      .then((res) => setSaveUser(res.data))
+      .catch((error) => console.error(error.message));
+  }, []);
 
   const handleLogin = (data) => {
     const email = data.userEmail;
@@ -47,7 +57,13 @@ const Login = () => {
     googleLogin()
       .then((result) => {
         navigate(location?.state ? location.state : "/");
-        console.log(result.user);
+        const currentUser = saveUser.find(
+          (myUser) => myUser.user_email === result.user?.email
+        );
+        if (currentUser.user_email !== result.user?.email) {
+          addNewUser(result.user);
+        }
+        console.log(currentUser);
         toast.success("User Login Successfully!", {
           position: "top-center",
           theme: "colored",
