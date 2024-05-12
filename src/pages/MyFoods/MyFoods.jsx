@@ -14,6 +14,8 @@ import {
   TableHeadCell,
   TableRow,
 } from "flowbite-react";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const MyFoods = () => {
   const { user } = useContext(AuthContext);
@@ -53,7 +55,25 @@ const MyFoods = () => {
       description: fDescription,
       food_image: fImage,
     };
-    console.log(updateFood);
+
+    axios
+      .patch(`http://localhost:5000/updateFood/${updateId}`, updateFood)
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          Swal.fire({
+            icon: "success",
+            title: "SUCCESSFUL",
+            text: "Food updated successfully!",
+            confirmButtonColor: "#22bb33",
+            confirmButtonText: "Okay",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.reload();
+            }
+          });
+        }
+      })
+      .catch((error) => toast.error(error.message));
   };
 
   return (
