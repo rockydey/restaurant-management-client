@@ -11,9 +11,14 @@ import {
 } from "flowbite-react";
 import { ImSpoonKnife } from "react-icons/im";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { CiMobile3 } from "react-icons/ci";
-import { IoLocationOutline } from "react-icons/io5";
-import { FaFacebook, FaPinterest, FaTwitter, FaYoutube } from "react-icons/fa";
+import { PiSignInFill } from "react-icons/pi";
+import {
+  FaFacebook,
+  FaPinterest,
+  FaTwitter,
+  FaYoutube,
+  FaRegUser,
+} from "react-icons/fa";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../provider/AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
@@ -105,12 +110,13 @@ const Header = () => {
     <div className='absolute top-0 w-full transition-all duration-1000'>
       <div className='py-3 px-3 md:px-5 lg:px-0 flex items-center justify-between text-color8 max-w-screen-xl mx-auto'>
         <div className='flex flex-col md:flex-row md:items-center gap-1 md:gap-5'>
-          <p className='flex text-base items-center gap-1'>
-            <CiMobile3 className='text-color9' /> <span>(315) 298-2218</span>
+          <p className='flex text-base items-center gap-2'>
+            <FaRegUser className='text-color9' />{" "}
+            <span>{user?.displayName}</span>
           </p>
-          <p className='flex text-base items-center gap-1'>
-            <IoLocationOutline className='text-color9' />{" "}
-            <span>Altmar, New York(NY)</span>
+          <p className='flex text-base items-center gap-2'>
+            <PiSignInFill className='text-color9' />{" "}
+            <span>{user?.metadata?.lastSignInTime.slice(4, 16)}</span>
           </p>
         </div>
         <div className='text-2xl flex items-center gap-5'>
