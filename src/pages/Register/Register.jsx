@@ -19,8 +19,7 @@ const Register = () => {
   } = useForm();
   const [show, setShow] = useState(false);
   const [regError, setRegError] = useState("");
-  const { user, createUser, updateUserProfile, setLoading } =
-    useContext(AuthContext);
+  const { createUser, updateUserProfile, setLoading } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -50,7 +49,7 @@ const Register = () => {
         updateUserProfile(name, photo)
           .then(() => {
             setLoading(false);
-            addNewUser(user);
+            addNewUser(result.user);
           })
           .catch((error) => {
             console.error(error);

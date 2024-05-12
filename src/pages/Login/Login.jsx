@@ -60,10 +60,9 @@ const Login = () => {
         const currentUser = saveUser.find(
           (myUser) => myUser.user_email === result.user?.email
         );
-        if (currentUser.user_email !== result.user?.email) {
+        if (currentUser === undefined) {
           addNewUser(result.user);
         }
-        console.log(currentUser);
         toast.success("User Login Successfully!", {
           position: "top-center",
           theme: "colored",
