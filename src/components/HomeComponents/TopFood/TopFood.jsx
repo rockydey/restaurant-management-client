@@ -8,7 +8,7 @@ const TopFood = ({ topFood }) => {
       <div className='flex justify-center -mt-28'>
         <img className='w-64' src={food_image} alt='' />
       </div>
-      <div className='text-color2 px-10 pb-10 space-y-3'>
+      <div className='text-color2 px-8 pb-8 space-y-3'>
         <div className='flex justify-between items-center'>
           <h3 className='text-[22px] font-black'>{food_name}</h3>
           <p className='text-xl font-bold'>${price}</p>

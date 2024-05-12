@@ -54,7 +54,7 @@ const AllFoods = () => {
   }, []);
 
   const handlePrevPage = () => {
-    if (currentPage > 1) {
+    if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
     }
     console.log(currentPage);
