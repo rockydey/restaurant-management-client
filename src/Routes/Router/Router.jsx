@@ -10,6 +10,9 @@ import Register from "../../pages/Register/Register";
 import ViewFoodDetails from "../../pages/ViewFoodDetails/ViewFoodDetails";
 import Purchase from "../../pages/Purchase/Purchase";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import AddFoods from "../../pages/AddFoods/AddFoods";
+import OrderedFoods from "../../pages/OrderedFoods/OrderedFoods";
+import MyFoods from "../../pages/MyFoods/MyFoods";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +64,18 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/my-foods",
+        element: <MyFoods />,
+      },
+      {
+        path: "/add-food",
+        element: <AddFoods />,
+      },
+      {
+        path: "/ordered-foods",
+        element: <OrderedFoods />,
       },
     ],
   },

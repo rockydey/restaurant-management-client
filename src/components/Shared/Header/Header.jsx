@@ -162,19 +162,19 @@ const Header = () => {
                         />
                       }>
                       <DropdownItem
-                        onClick={() => navigate("/my-items")}
+                        onClick={() => navigate("/my-foods")}
                         className='text-color8 focus:bg-color9 hover:bg-color9 text-lg font-medium'>
-                        My Items
+                        My Foods
                       </DropdownItem>
                       <DropdownItem
-                        onClick={() => navigate("/add-item")}
+                        onClick={() => navigate("/add-food")}
                         className='text-color8 focus:bg-color9 hover:bg-color9 text-lg font-medium'>
-                        Add Item
+                        Add Food
                       </DropdownItem>
                       <DropdownItem
-                        onClick={() => navigate("/ordered-items")}
+                        onClick={() => navigate("/ordered-foods")}
                         className='text-color8 focus:bg-color9 hover:bg-color9 text-lg font-medium'>
-                        Ordered Items
+                        Ordered Foods
                       </DropdownItem>
                       <DropdownDivider className='bg-color9 lg:hidden' />
                       <DropdownItem className='hover:bg-color12 lg:hidden focus:bg-color12'>

@@ -62,6 +62,8 @@ const Purchase = () => {
             icon: "success",
             title: "SUCCESSFUL",
             text: "Order placed successfully!",
+            confirmButtonColor: "#22bb33",
+            confirmButtonText: "Okay",
           });
           const nCount = count + 1;
           const nQuantity = quantity - foodQuantity;
