@@ -1,7 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import loginBg from "../../assets/login/login-hero.jpg";
 import { useContext, useEffect, useState } from "react";
-
 import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
 import axios from "axios";
 import { GrUpdate } from "react-icons/gr";
@@ -101,8 +100,8 @@ const MyFoods = () => {
               <div className='overflow-x-auto'>
                 <Table hoverable>
                   <TableHead className='bg-color7 border-b border-color3 text-color2 font-semibold text-sm'>
-                    <TableHeadCell>Food Image</TableHeadCell>
-                    <TableHeadCell>Food Name</TableHeadCell>
+                    <TableHeadCell>Image</TableHeadCell>
+                    <TableHeadCell>Name</TableHeadCell>
                     <TableHeadCell>Price</TableHeadCell>
                     <TableHeadCell>Category</TableHeadCell>
                     <TableHeadCell>Origin</TableHeadCell>

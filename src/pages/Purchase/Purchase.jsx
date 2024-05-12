@@ -45,6 +45,7 @@ const Purchase = () => {
 
     const order = {
       food_name: foodName,
+      food_image: food_image,
       price: foodPrice,
       quantity: foodQuantity,
       user_name: userName,
