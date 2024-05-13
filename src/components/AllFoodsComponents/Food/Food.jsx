@@ -5,7 +5,10 @@ const Food = ({ food }) => {
   const { _id, food_name, food_image, food_category, price, quantity } = food;
   const navigate = useNavigate();
   return (
-    <div className='border text-color2 border-color5 duration-300 p-5 hover:bg-color8 bg-color7'>
+    <div
+      data-aos='fade-up'
+      data-aos-duration='1000'
+      className='border text-color2 border-color5 duration-300 p-5 hover:bg-color8 bg-color7'>
       <div className='flex flex-col items-center'>
         <img className='' src={food_image} alt='' />
         <div className='text-center space-y-4'>

@@ -9,13 +9,16 @@ const AboutUs = () => {
     <div className='py-24 px-3 md:px-5 lg:px-0'>
       <div className='max-w-screen-xl mx-auto'>
         <div className='grid grid-cols-1 items-center lg:grid-cols-2 gap-10'>
-          <div className='grid grid-cols-2 gap-5'>
+          <div
+            data-aos='fade-down'
+            data-aos-duration='1500'
+            className='grid grid-cols-2 gap-5'>
             <img src={aboutImg1} alt='' />
             <img className='w-4/5 mt-auto' src={aboutImg2} alt='' />
             <img className='w-4/5 ml-auto' src={aboutImg3} alt='' />
             <img src={aboutImg4} alt='' />
           </div>
-          <div className=''>
+          <div data-aos='fade-up' data-aos-duration='1500' className=''>
             <div className='flex items-center gap-2'>
               <h3 className='text-color9 font-pacifico text-2xl lg:text-2xl'>
                 About Us

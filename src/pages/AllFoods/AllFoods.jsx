@@ -5,6 +5,7 @@ import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const AllFoods = () => {
   const [searchFood, setSearchFood] = useState([]);
@@ -20,13 +21,14 @@ const AllFoods = () => {
       .get(
         `https://restaurant-management-server-nine.vercel.app/foods?page=${currentPage}&size=${foodsPerPage}`
       )
-      .then((res) => setSearchFood(res.data))
+      .then((res) => {
+        setSearchFood(res.data);
+      })
       .catch((error) => console.error(error));
   }, [currentPage]);
 
   const handleSearchOnChange = (event) => {
     const search = event.target.value;
-    console.log(search);
     if (search === "") {
       axios
         .get(
@@ -36,8 +38,16 @@ const AllFoods = () => {
         .catch((error) => console.error(error));
     } else {
       axios
-        .get(`https://restaurant-management-server-nine.vercel.app/searchFoods?search=${search}`)
+        .get(
+          `https://restaurant-management-server-nine.vercel.app/searchFoods?search=${search}`
+        )
         .then((res) => {
+          if (res.data.length === 0) {
+            toast.warning("Sorry, this food dish isn't found!", {
+              position: "top-center",
+              theme: "colored",
+            });
+          }
           setSearchFood(res.data);
         })
         .catch((error) => console.error(error));
@@ -103,17 +113,13 @@ const AllFoods = () => {
                 </button>
               </div>
             </div>
-            {searchFood.length === 0 ? (
-              <p className='text-center text-4xl font-black text-color11'>
-                Sorry, this food dish is not found!
-              </p>
-            ) : (
+            {
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {searchFood.map((food) => (
                   <Food key={food._id} food={food}></Food>
                 ))}
               </div>
-            )}
+            }
             <div className='mt-10 flex gap-4 justify-center items-center'>
               <button
                 onClick={handlePrevPage}

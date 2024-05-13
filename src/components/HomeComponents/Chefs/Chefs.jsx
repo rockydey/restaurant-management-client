@@ -16,7 +16,10 @@ const Chefs = () => {
         <h2 className='text-center mt-4 mb-10 font-black text-3xl md:text-4xl'>
           Meet Our Special Chefs
         </h2>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+        <div
+          data-aos='zoom-out-down'
+          data-aos-duration='1500'
+          className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
           <div className='bg-color3 px-5 pt-5'>
             <img className='rounded-full' src={chef1} alt='' />
             <div className='text-center mt-5'>

@@ -22,6 +22,9 @@ import {
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../provider/AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
 
 const Header = () => {
   const navigate = useNavigate();
@@ -117,7 +120,10 @@ const Header = () => {
   };
 
   return (
-    <div className='absolute top-0 w-full transition-all duration-1000'>
+    <div
+      data-aos='fade-down'
+      data-aos-duration='1500'
+      className='absolute top-0 w-full transition-all duration-1000'>
       <div className='py-3 px-3 md:px-5 lg:px-0 flex items-center justify-between text-color8 max-w-screen-xl mx-auto'>
         <div className='flex flex-col md:flex-row md:items-center gap-1 md:gap-5'>
           <p className='flex text-base items-center gap-2'>
