@@ -122,7 +122,7 @@ const Header = () => {
         <div className='flex flex-col md:flex-row md:items-center gap-1 md:gap-5'>
           <p className='flex text-base items-center gap-2'>
             <FaRegUser className='text-color9' />{" "}
-            <span>{user?.displayName}</span>
+            <span>{user?.displayName ? user?.displayName : "User"}</span>
           </p>
           <p className='flex text-base items-center gap-2'>
             <MdOutlineDateRange className='text-color9' />{" "}
@@ -158,7 +158,7 @@ const Header = () => {
                 onClick={() => navigate("/")}
                 className='cursor-pointer'>
                 <ImSpoonKnife className='text-2xl md:text-3xl lg:text-4xl text-color9' />
-                <span className='self-center ml-2 text-3xl md:text-[35px] lg:text-[40px] font-black whitespace-nowrap text-color9  dark:text-white'>
+                <span className='self-center ml-2 text-3xl md:text-[35px] lg:text-[40px] font-black whitespace-nowrap text-color9'>
                   TasteTreat
                 </span>
               </NavbarBrand>

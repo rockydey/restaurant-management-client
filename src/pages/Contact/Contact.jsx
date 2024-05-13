@@ -47,7 +47,7 @@ const Contact = () => {
           <div className='max-w-screen-xl mx-auto'>
             <div className='flex items-center gap-4 justify-center'>
               <div className='w-16 border-color9 border-b-[3px]'></div>
-              <h4 className='font-pacifico text-xl text-color9'>Contact Us</h4>
+              <h4 className='font-pacifico text-2xl text-color9'>Contact Us</h4>
               <div className='w-16 border-color9 border-b-[3px]'></div>
             </div>
             <h2 className='text-center text-3xl md:text-4xl mt-4 font-black'>
@@ -56,9 +56,7 @@ const Contact = () => {
             <div className='flex md:flex-row flex-col gap-6 md:justify-around md:items-center mt-10'>
               <div>
                 <div className='flex items-center gap-2'>
-                  <h3 className='text-color9 font-pacifico text-lg lg:text-2xl'>
-                    Booking
-                  </h3>
+                  <h3 className='text-color9 font-pacifico text-xl'>Booking</h3>
                   <div className='w-12 border-color9 border-b-[3px]'></div>
                 </div>
                 <p className='flex mt-2 items-center gap-2 text-xl cursor-pointer'>
@@ -68,9 +66,7 @@ const Contact = () => {
               </div>
               <div>
                 <div className='flex items-center gap-2'>
-                  <h3 className='text-color9 font-pacifico text-lg lg:text-2xl'>
-                    General
-                  </h3>
+                  <h3 className='text-color9 font-pacifico text-xl'>General</h3>
                   <div className='w-12 border-color9 border-b-[3px]'></div>
                 </div>
                 <p className='flex mt-2 items-center gap-2 text-xl cursor-pointer'>
@@ -79,7 +75,7 @@ const Contact = () => {
               </div>
               <div>
                 <div className='flex items-center gap-2'>
-                  <h3 className='text-color9 font-pacifico text-lg lg:text-2xl'>
+                  <h3 className='text-color9 font-pacifico text-xl'>
                     Technical
                   </h3>
                   <div className='w-12 border-color9 border-b-[3px]'></div>

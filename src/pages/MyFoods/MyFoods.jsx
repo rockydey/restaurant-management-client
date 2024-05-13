@@ -190,7 +190,7 @@ const MyFoods = () => {
                     <input
                       defaultValue={updateList?.price}
                       className='w-full rounded-md focus:shadow-none focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
-                      type='text'
+                      type='number'
                       placeholder='Food price'
                       name='fPrice'
                       id='fPrice'

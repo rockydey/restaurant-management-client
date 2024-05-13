@@ -19,7 +19,7 @@ const TopFoods = () => {
       <div className='max-w-screen-xl mx-auto px-3 md:px-5 lg:px-0'>
         <div className='flex items-center gap-4 justify-center'>
           <div className='w-16 border-color9 border-b-[3px]'></div>
-          <h4 className='font-pacifico text-xl text-color9'>Top Foods</h4>
+          <h4 className='font-pacifico text-2xl text-color9'>Top Foods</h4>
           <div className='w-16 border-color9 border-b-[3px]'></div>
         </div>
         <h2 className='text-center mt-4 font-black text-3xl md:text-4xl mb-32'>

@@ -108,7 +108,7 @@ const AllFoods = () => {
                 Sorry, this food dish is not found!
               </p>
             ) : (
-              <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {searchFood.map((food) => (
                   <Food key={food._id} food={food}></Food>
                 ))}
