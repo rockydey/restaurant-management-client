@@ -5,6 +5,7 @@ import AboutUs from "../../components/HomeComponents/AboutUs/AboutUs";
 import "./Home.css";
 import { useEffect, useState } from "react";
 import { IoIosArrowDropup } from "react-icons/io";
+import Newsletter from "../../components/HomeComponents/Newsletter/Newsletter";
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,9 +38,12 @@ const Home = () => {
       <Helmet>
         <title>TasteTreat | Home</title>
       </Helmet>
+
       <Banner />
       <AboutUs />
       <TopFoods />
+      <Newsletter />
+
       <button
         onClick={scrollToTop}
         className={`p-3 flex items-center justify-center bg-color9 text-color8 font-bold text-3xl fixed bottom-5 right-5 border-0 scroll-btn ${
