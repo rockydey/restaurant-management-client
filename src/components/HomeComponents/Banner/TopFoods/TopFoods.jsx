@@ -22,7 +22,7 @@ const TopFoods = () => {
           <h4 className='font-pacifico text-xl text-color9'>Top Foods</h4>
           <div className='w-16 border-color9 border-b-[3px]'></div>
         </div>
-        <h2 className='text-center mt-4 font-black text-4xl mb-32'>
+        <h2 className='text-center mt-4 font-black text-3xl md:text-4xl mb-32'>
           Check Our Tasty Foods
         </h2>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20'>
