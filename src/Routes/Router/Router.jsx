@@ -36,9 +36,12 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/foods/${params.id}`, {
-            credentials: "include",
-          }),
+          fetch(
+            `https://restaurant-management-server-nine.vercel.app/foods/${params.id}`,
+            {
+              credentials: "include",
+            }
+          ),
       },
       {
         path: "/purchase/:id",
@@ -48,14 +51,20 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/foods/${params.id}`, {
-            credentials: "include",
-          }),
+          fetch(
+            `https://restaurant-management-server-nine.vercel.app/foods/${params.id}`,
+            {
+              credentials: "include",
+            }
+          ),
       },
       {
         path: "/gallery",
         element: <Gallery />,
-        loader: () => fetch("http://localhost:5000/feedbacks"),
+        loader: () =>
+          fetch(
+            "https://restaurant-management-server-nine.vercel.app/feedbacks"
+          ),
       },
       {
         path: "/contact",

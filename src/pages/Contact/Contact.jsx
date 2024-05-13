@@ -2,8 +2,25 @@ import { Helmet } from "react-helmet-async";
 import loginBg from "../../assets/login/login-hero.jpg";
 import { IoMdMailOpen } from "react-icons/io";
 import bookingImg from "../../assets/contact/booking.jpg";
+import Swal from "sweetalert2";
 
 const Contact = () => {
+  const handleContact = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    Swal.fire({
+      icon: "success",
+      title: "Thank You",
+      text: "Soon, we will contact with you.",
+      confirmButtonColor: "#22bb33",
+      confirmButtonText: "Okay",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        form.reset();
+      }
+    });
+  };
+
   return (
     <div>
       <Helmet>
@@ -81,7 +98,9 @@ const Contact = () => {
                 />
               </div>
               <div>
-                <form className='text-color2 md:border-0 md:p-0 border-2 rounded-xl p-5 border-color9 space-y-5'>
+                <form
+                  onSubmit={handleContact}
+                  className='text-color2 md:border-0 md:p-0 border-2 rounded-xl p-5 border-color9 space-y-5'>
                   <div className='flex flex-col md:flex-row gap-5'>
                     <input
                       className='w-full focus:shadow-none focus:ring-0 border-color4 p-4 focus:outline-none text-base font-normal text-color2'

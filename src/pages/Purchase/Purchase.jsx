@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import loginBg from "../../assets/login/login-hero.jpg";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
@@ -11,6 +11,7 @@ const Purchase = () => {
   const { _id, food_name, food_image, price, quantity, count } = purchaseFood;
   const { user } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   //   Current Date
   const today = new Date();
@@ -55,7 +56,10 @@ const Purchase = () => {
     console.log(order);
 
     axios
-      .post("http://localhost:5000/orders", order)
+      .post(
+        "https://restaurant-management-server-nine.vercel.app/orders",
+        order
+      )
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
@@ -65,14 +69,21 @@ const Purchase = () => {
             text: "Order placed successfully!",
             confirmButtonColor: "#22bb33",
             confirmButtonText: "Okay",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              navigate("/ordered-foods");
+            }
           });
           const nCount = count + 1;
           const nQuantity = quantity - foodQuantity;
           axios
-            .patch(`http://localhost:5000/foods/${_id}`, {
-              count: nCount,
-              quantity: nQuantity,
-            })
+            .patch(
+              `https://restaurant-management-server-nine.vercel.app/foods/${_id}`,
+              {
+                count: nCount,
+                quantity: nQuantity,
+              }
+            )
             .then((res) => {
               console.log(res.data);
             })

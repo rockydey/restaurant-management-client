@@ -18,7 +18,7 @@ const AllFoods = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/foods?page=${currentPage}&size=${foodsPerPage}`
+        `https://restaurant-management-server-nine.vercel.app/foods?page=${currentPage}&size=${foodsPerPage}`
       )
       .then((res) => setSearchFood(res.data))
       .catch((error) => console.error(error));
@@ -30,13 +30,13 @@ const AllFoods = () => {
     if (search === "") {
       axios
         .get(
-          `http://localhost:5000/foods?page=${currentPage}&size=${foodsPerPage}`
+          `https://restaurant-management-server-nine.vercel.app/foods?page=${currentPage}&size=${foodsPerPage}`
         )
         .then((res) => setSearchFood(res.data))
         .catch((error) => console.error(error));
     } else {
       axios
-        .get(`http://localhost:5000/searchFoods?search=${search}`)
+        .get(`https://restaurant-management-server-nine.vercel.app/searchFoods?search=${search}`)
         .then((res) => {
           setSearchFood(res.data);
         })
@@ -46,7 +46,7 @@ const AllFoods = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/foodsCount")
+      .get("https://restaurant-management-server-nine.vercel.app/foodsCount")
       .then((res) => {
         setCount(res.data.count);
       })
