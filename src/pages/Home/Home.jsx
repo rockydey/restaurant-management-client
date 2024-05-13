@@ -6,6 +6,7 @@ import "./Home.css";
 import { useEffect, useState } from "react";
 import { IoIosArrowDropup } from "react-icons/io";
 import Newsletter from "../../components/HomeComponents/Newsletter/Newsletter";
+import Chefs from "../../components/HomeComponents/Chefs/Chefs";
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -42,6 +43,7 @@ const Home = () => {
       <Banner />
       <AboutUs />
       <TopFoods />
+      <Chefs />
       <Newsletter />
 
       <button

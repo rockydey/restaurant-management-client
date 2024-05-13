@@ -20,11 +20,11 @@ const Newsletter = () => {
           <input
             type='email'
             name=''
-            className='py-[14px] w-10/12 md:w-2/5 lg:w-1/4 focus:shadow-none focus:ring-0 border-color4 px-4 focus:outline-none text-base font-normal text-color2'
+            className='py-[14px] w-10/12 border border-color9 md:w-2/5 lg:w-1/4 focus:shadow-none focus:ring-0 px-4 focus:outline-none text-base font-normal text-color2'
             placeholder='Your Email'
             id=''
           />
-          <button className='px-3 absolute top-[7px] right-[10%] md:right-[31%] lg:right-[38%] py-2 bg-color9'>
+          <button className='px-3 uppercase absolute top-[7px] right-[10%] md:right-[31%] lg:right-[38%] py-2 bg-color9'>
             Subscribe
           </button>
         </div>
