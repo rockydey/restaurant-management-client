@@ -1,8 +1,24 @@
-# React + Vite
+# Welcome to TasteTreat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Here is my new MERN Stack project on Restaurant Management. This website is specially for ordering national and international delicious foods. See all foods and feedbacks of our customer and search foods by food name. Explore the hole website to see exciting feature by clicking the website link given below.
 
-Currently, two official plugins are available:
+### Assignment_ID: : assignment_category_0005
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Live Website : (https://taste-treat-restaurant-auth.web.app/)
+
+### Features
+
+- User can login or register this website so that they can access the protected document
+- User can search food by food name
+- User can order foods and see their order
+- User can add food and also update food details adding by him/her
+- User can see customers feedback also add feedback
+
+### npm package that are user in this website
+
+- React hook form
+- React toastify
+- React tooltip
+- React spinners
+- React icons
+- Sweet Alert

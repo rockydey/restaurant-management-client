@@ -196,7 +196,7 @@ const Header = () => {
                       <DropdownItem
                         onClick={() => navigate("/ordered-foods")}
                         className='text-color8 focus:bg-color9 hover:bg-color9 text-lg font-medium'>
-                        Ordered Foods
+                        My Orders
                       </DropdownItem>
                       <DropdownDivider className='bg-color9 lg:hidden' />
                       <DropdownItem className='hover:bg-color12 lg:hidden focus:bg-color12'>
@@ -222,7 +222,7 @@ const Header = () => {
                 )}
                 <NavbarToggle className='toggle' />
               </div>
-              <NavbarCollapse className='text-color8'>
+              <NavbarCollapse className='text-color8 z-50'>
                 {navLinks}
               </NavbarCollapse>
             </Navbar>
