@@ -106,7 +106,7 @@ const Header = () => {
   const handleLogOut = () => {
     logOut()
       .then(() => {
-        toast.success("Log Out Successfully!", {
+        toast.success("Logout Successfully!", {
           position: "top-center",
           theme: "colored",
         });
