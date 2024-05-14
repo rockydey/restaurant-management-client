@@ -2,13 +2,16 @@ import { Helmet } from "react-helmet-async";
 import loginBg from "../../assets/login/login-hero.jpg";
 import Food from "../../components/AllFoodsComponents/Food/Food";
 import { FaSearch } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
+import HashLoader from "react-spinners/HashLoader";
 
 const AllFoods = () => {
   const [searchFood, setSearchFood] = useState([]);
+  const { loading, setLoading } = useContext(AuthContext);
   const [count, setCount] = useState(null);
   const foodsPerPage = 9;
   const [currentPage, setCurrentPage] = useState(0);
@@ -17,6 +20,7 @@ const AllFoods = () => {
   const pages = [...Array(numberOfPages).keys()];
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(
         `https://restaurant-management-server-nine.vercel.app/foods?page=${currentPage}&size=${foodsPerPage}`
@@ -24,8 +28,9 @@ const AllFoods = () => {
       .then((res) => {
         setSearchFood(res.data);
       })
-      .catch((error) => console.error(error));
-  }, [currentPage]);
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  }, [currentPage, setLoading]);
 
   const handleSearchOnChange = (event) => {
     const search = event.target.value;
@@ -62,6 +67,14 @@ const AllFoods = () => {
       })
       .catch((error) => console.error(error));
   }, []);
+
+  if (loading) {
+    return (
+      <p className='flex justify-center h-[50vh] pt-52'>
+        <HashLoader size={50} color='#F9B17A' />
+      </p>
+    );
+  }
 
   const handlePrevPage = () => {
     if (currentPage > 0) {

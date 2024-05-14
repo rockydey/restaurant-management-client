@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import loginBg from "../../assets/login/login-hero.jpg";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
@@ -123,7 +123,25 @@ const Purchase = () => {
                   alt=''
                 />
               </div>
-              <form onSubmit={handlePurchase} className='text-color2 space-y-5'>
+              <div>
+                {quantity === 0 && (
+                  <div className='text-center my-5 space-y-2'>
+                    <p className='text-color11 text-base font-semibold'>
+                      Sorry, {food_name} is not available now.
+                    </p>
+                    <Link
+                      to='/all-foods'
+                      className='bg-color9 inline-block text-color8 px-4 py-2 font-semibold text-lg'>
+                      Purchase Another
+                    </Link>
+                  </div>
+                )}
+              </div>
+              <form
+                onSubmit={handlePurchase}
+                className={`text-color2 space-y-5 ${
+                  quantity === 0 && "blur-sm"
+                }`}>
                 <div className='flex md:flex-row flex-col gap-5 md:gap-0 justify-between'>
                   <div className='flex flex-col gap-1'>
                     <label className='font-semibold text-lg' htmlFor='uName'>

@@ -17,7 +17,7 @@ const Chefs = () => {
           Meet Our Special Chefs
         </h2>
         <div
-          data-aos='zoom-out-down'
+          data-aos='zoom-in-down'
           data-aos-duration='1500'
           className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
           <div className='bg-color3 px-5 pt-5'>

@@ -31,7 +31,10 @@ const Gallery = () => {
     };
 
     axios
-      .post("https://restaurant-management-server-nine.vercel.app/feedbacks", userFeedback)
+      .post(
+        "https://restaurant-management-server-nine.vercel.app/feedbacks",
+        userFeedback
+      )
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({
