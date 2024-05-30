@@ -26,7 +26,7 @@ const Login = () => {
 
   useEffect(() => {
     axios
-      .get("https://restaurant-management-server-nine.vercel.app/user")
+      .get("http://localhost:5000/user")
       .then((res) => setSaveUser(res.data))
       .catch((error) => console.error(error.message));
   }, []);

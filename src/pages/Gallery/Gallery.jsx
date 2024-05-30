@@ -32,7 +32,7 @@ const Gallery = () => {
 
     axios
       .post(
-        "https://restaurant-management-server-nine.vercel.app/feedbacks",
+        "http://localhost:5000/feedbacks",
         userFeedback
       )
       .then((res) => {

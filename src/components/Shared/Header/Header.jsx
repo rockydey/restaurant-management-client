@@ -156,7 +156,9 @@ const Header = () => {
         }`}>
         <div
           className={`${
-            isSticky ? "bg-[#000000d9] border-b border-b-color3" : "bg-color10"
+            isSticky
+              ? "bg-[#000000d9] border-b border-b-color3"
+              : "bg-[#000000d9] lg:bg-color10"
           }  py-3 px-3 md:px-5 lg:px-0`}>
           <div className='max-w-screen-xl mx-auto'>
             <Navbar fluid rounded>

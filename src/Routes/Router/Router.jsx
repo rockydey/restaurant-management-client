@@ -13,6 +13,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import AddFoods from "../../pages/AddFoods/AddFoods";
 import OrderedFoods from "../../pages/OrderedFoods/OrderedFoods";
 import MyFoods from "../../pages/MyFoods/MyFoods";
+import Payment from "../../pages/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://restaurant-management-server-nine.vercel.app/foods/${params.id}`,
+            `http://localhost:5000/foods/${params.id}`,
             {
               credentials: "include",
             }
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://restaurant-management-server-nine.vercel.app/foods/${params.id}`,
+            `http://localhost:5000/foods/${params.id}`,
             {
               credentials: "include",
             }
@@ -63,7 +64,7 @@ const router = createBrowserRouter([
         element: <Gallery />,
         loader: () =>
           fetch(
-            "https://restaurant-management-server-nine.vercel.app/feedbacks"
+            "http://localhost:5000/feedbacks"
           ),
       },
       {
@@ -99,6 +100,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <OrderedFoods />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/payment/:id",
+        element: (
+          <PrivateRoute>
+            <Payment />
           </PrivateRoute>
         ),
       },

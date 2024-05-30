@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import loginBg from "../../assets/login/login-hero.jpg";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
+// import { useContext, useEffect, useState } from "react";
+// import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
 import axios from "axios";
 import {
   Table,
@@ -14,19 +14,25 @@ import {
 import { MdDeleteOutline } from "react-icons/md";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+import useOrders from "../../hooks/useOrders";
 
 const OrderedFoods = () => {
-  const { user } = useContext(AuthContext);
-  const [myOrders, setMyOrders] = useState([]);
+  // const { user } = useContext(AuthContext);
+  // const [myOrders, setMyOrders] = useState([]);
+  const [orders] = useOrders();
 
-  useEffect(() => {
-    axios
-      .get(`https://restaurant-management-server-nine.vercel.app/orders?email=${user?.email}`, {
-        withCredentials: true,
-      })
-      .then((res) => setMyOrders(res.data))
-      .catch((error) => console.error(error.message));
-  }, [user]);
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       `http://localhost:5000/orders?email=${user?.email}`,
+  //       {
+  //         withCredentials: true,
+  //       }
+  //     )
+  //     .then((res) => setMyOrders(res.data))
+  //     .catch((error) => console.error(error.message));
+  // }, [user]);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -40,7 +46,7 @@ const OrderedFoods = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`https://restaurant-management-server-nine.vercel.app/orders/${id}`)
+          .delete(`http://localhost:5000/orders/${id}`)
           .then((res) => {
             if (res.data.deletedCount > 0) {
               Swal.fire({
@@ -96,10 +102,11 @@ const OrderedFoods = () => {
                   <TableHeadCell>Date</TableHeadCell>
                   <TableHeadCell>Quantity</TableHeadCell>
                   <TableHeadCell>Owner</TableHeadCell>
-                  <TableHeadCell>Action</TableHeadCell>
+                  <TableHeadCell>Pay</TableHeadCell>
+                  <TableHeadCell>Delete</TableHeadCell>
                 </TableHead>
                 <TableBody className='divide-y'>
-                  {myOrders.map((myOrder) => (
+                  {orders.map((myOrder) => (
                     <TableRow
                       className='bg-color7 hover:bg-color7'
                       key={myOrder._id}>
@@ -125,6 +132,19 @@ const OrderedFoods = () => {
                       <TableCell className='text-lg text-color2 font-medium'>
                         {myOrder.user_name}
                       </TableCell>
+                      <TableCell className='text-lg text-color2 font-medium'>
+                        {myOrder.status === "paid" ? (
+                          <button className='text-color8 cursor-default bg-[#4a934a] text-lg uppercase font-semibold p-2 rounded-lg'>
+                            Paid
+                          </button>
+                        ) : (
+                          <Link
+                            to={`/payment/${myOrder._id}`}
+                            className='text-color9  text-lg uppercase font-semibold border-2 border-color9 p-2 rounded-lg'>
+                            Pay Now
+                          </Link>
+                        )}
+                      </TableCell>
                       <TableCell>
                         <button
                           onClick={() => handleDelete(myOrder._id)}
@@ -137,6 +157,13 @@ const OrderedFoods = () => {
                 </TableBody>
               </Table>
             </div>
+            {/* <div className='text-center mt-5'>
+              <Link
+                to={`/payment`}
+                className='bg-color9  text-lg uppercase font-semibold text-color8 p-2 rounded-lg'>
+                Pay Now
+              </Link>
+            </div> */}
           </div>
         </div>
       </div>

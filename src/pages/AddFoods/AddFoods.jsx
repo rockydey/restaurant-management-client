@@ -37,7 +37,7 @@ const AddFoods = () => {
     };
 
     axios
-      .post("https://restaurant-management-server-nine.vercel.app/foods", addFood)
+      .post("http://localhost:5000/foods", addFood)
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({

@@ -25,7 +25,7 @@ const MyFoods = () => {
 
   useEffect(() => {
     axios
-      .get(`https://restaurant-management-server-nine.vercel.app/myFoods?email=${user?.email}`, {
+      .get(`http://localhost:5000/myFoods?email=${user?.email}`, {
         withCredentials: true,
       })
       .then((res) => setMyFoods(res.data))
@@ -58,7 +58,7 @@ const MyFoods = () => {
     };
 
     axios
-      .patch(`https://restaurant-management-server-nine.vercel.app/updateFood/${updateId}`, updateFood)
+      .patch(`http://localhost:5000/updateFood/${updateId}`, updateFood)
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           Swal.fire({

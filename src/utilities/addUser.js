@@ -8,7 +8,7 @@ const addNewUser = (user) => {
   };
 
   axios
-    .post("https://restaurant-management-server-nine.vercel.app/user", userInfo)
+    .post("http://localhost:5000/user", userInfo)
     .then((res) => console.log("From addUser", res.data))
     .catch((error) => console.error("From addUser", error.message));
 };
