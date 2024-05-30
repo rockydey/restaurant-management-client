@@ -10,7 +10,7 @@ const useOrders = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/orders?email=${user?.email}`,
+        `https://restaurant-management-server-nine.vercel.app/orders?email=${user?.email}`,
         {
           withCredentials: true,
         }

@@ -8,7 +8,7 @@ const TopFoods = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/food")
+      .get("https://restaurant-management-server-nine.vercel.app/food")
       .then((res) => {
         setTopFoods(res.data);
       })

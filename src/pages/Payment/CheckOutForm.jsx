@@ -23,7 +23,7 @@ const CheckOutForm = ({ orderId }) => {
   useEffect(() => {
     if (orderPrice?.price > 0) {
       axios
-        .post("http://localhost:5000/create-payment-intent", {
+        .post("https://restaurant-management-server-nine.vercel.app/create-payment-intent", {
           price: parseInt(orderPrice?.price),
         })
         .then((res) => {
@@ -93,7 +93,7 @@ const CheckOutForm = ({ orderId }) => {
         }).then((result) => {
           if (result.isConfirmed) {
             axios
-              .patch(`http://localhost:5000/orders/${orderId}`, {
+              .patch(`https://restaurant-management-server-nine.vercel.app/orders/${orderId}`, {
                 status: "paid",
               })
               .then((res) => {

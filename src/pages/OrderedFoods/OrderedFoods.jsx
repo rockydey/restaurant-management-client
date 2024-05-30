@@ -25,7 +25,7 @@ const OrderedFoods = () => {
   // useEffect(() => {
   //   axios
   //     .get(
-  //       `http://localhost:5000/orders?email=${user?.email}`,
+  //       `https://restaurant-management-server-nine.vercel.app/orders?email=${user?.email}`,
   //       {
   //         withCredentials: true,
   //       }
@@ -46,7 +46,7 @@ const OrderedFoods = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/orders/${id}`)
+          .delete(`https://restaurant-management-server-nine.vercel.app/orders/${id}`)
           .then((res) => {
             if (res.data.deletedCount > 0) {
               Swal.fire({

@@ -57,7 +57,7 @@ const Purchase = () => {
 
     axios
       .post(
-        "http://localhost:5000/orders",
+        "https://restaurant-management-server-nine.vercel.app/orders",
         order
       )
       .then((res) => {
@@ -78,7 +78,7 @@ const Purchase = () => {
           const nQuantity = quantity - foodQuantity;
           axios
             .patch(
-              `http://localhost:5000/foods/${_id}`,
+              `https://restaurant-management-server-nine.vercel.app/foods/${_id}`,
               {
                 count: nCount,
                 quantity: nQuantity,

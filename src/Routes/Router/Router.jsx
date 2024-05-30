@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/foods/${params.id}`,
+            `https://restaurant-management-server-nine.vercel.app/foods/${params.id}`,
             {
               credentials: "include",
             }
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/foods/${params.id}`,
+            `https://restaurant-management-server-nine.vercel.app/foods/${params.id}`,
             {
               credentials: "include",
             }
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
         element: <Gallery />,
         loader: () =>
           fetch(
-            "http://localhost:5000/feedbacks"
+            "https://restaurant-management-server-nine.vercel.app/feedbacks"
           ),
       },
       {

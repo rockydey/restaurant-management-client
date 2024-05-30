@@ -58,14 +58,14 @@ const AuthProvider = ({ children }) => {
 
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", loggedUser, {
+          .post("https://restaurant-management-server-nine.vercel.app/jwt", loggedUser, {
             withCredentials: true,
           })
           .then((res) => console.log("Token response", res.data))
           .catch((error) => console.error(error.message));
       } else {
         axios
-          .post("http://localhost:5000/logout", loggedUser, {
+          .post("https://restaurant-management-server-nine.vercel.app/logout", loggedUser, {
             withCredentials: true,
           })
           .then((res) => console.log(res.data))
